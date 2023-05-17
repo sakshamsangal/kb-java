@@ -1,0 +1,80 @@
+/**
+ * This is a controller class
+ */
+@RestController
+@RequestMapping("/api")
+@RequiredArgsConstructor
+@Slf4j
+public class PenController {
+    private final PenService penService;
+
+    @PostMapping("/customHeader")
+    public ResponseEntity<String> age(@RequestParam("yearOfBirth") int yearOfBirth) {
+        return ResponseEntity.ok()
+                .header("Custom-Header", "foo")
+                .body("Custom header set");
+    }
+
+
+}
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-activemq</artifactId>
+		</dependency>
+
+<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160212</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.6</version>
+		</dependency>
+    @PostMapping("/search/GenericSearch")
+    public Object aadhaarEkyc(@RequestBody Object request) throws JSONException, JsonProcessingException {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonString = objectMapper.writeValueAsString(request);
+        JSONObject jsonObject = new JSONObject(jsonString);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>")
+                .append("<DeDupeEnquiryResp>")
+                .append("<Records>")
+                .append("<record>2335|Record not found</record>")
+                .append("<record>2335|Record not found</record>")
+                .append("</Records>")
+                .append("</DeDupeEnquiryResp>");
+        return stringBuilder;
+    }
+
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+	@Override
+	public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
+		configurer.defaultContentType(MediaType.APPLICATION_XML);
+	}
+}
+  return XML.toJSONObject(payload.getResponse()).toString();
+    @PostMapping(value = Route.CIF_CREATION, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String cif(@RequestBody Map<String, Object> map) throws JSONException {
+        JSONObject aof = new JSONObject(map).getJSONArray("param").getJSONObject(0).getJSONObject("request").getJSONObject("mainObjectJSON").getJSONObject("AOF");
+        String cifResponse = cifService.hitEndpoint(aof);
+        String str = accountService.hitEndpoint(aof, new JSONObject(cifResponse));
+
+        JSONObject jsonObject = new JSONObject(str).getJSONObject("Response");
+        JSONObject res = jsonObject.getJSONObject("TransactionStatus");
+        res.put("CustomerID", jsonObject.getLong("CustomerID"));
+        res.put("AccountNumber", jsonObject.getLong("AccountNumber"));
+        return res.toString();
+    }
+
+       <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>8.0.13</version>
+        </dependency>

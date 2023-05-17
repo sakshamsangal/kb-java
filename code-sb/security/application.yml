@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost:3306/sms
+    username: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
