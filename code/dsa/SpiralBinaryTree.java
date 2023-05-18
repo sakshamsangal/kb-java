@@ -1,28 +1,21 @@
 package com.example.dsa;
-
 import java.util.*;
-
 public class SpiralBinaryTree {
     class Node {
         Node left;
         int data;
         Node right;
-
         public Node(int data) {
             this.data = data;
         }
     }
     Node root;
-
     public SpiralBinaryTree(Node root) {
         this.root = root;
     }
-
     public void printTreeInSpiralOrder() {
-
     Queue<Node> queue = new LinkedList<>();
     Stack<Node> stack = new Stack<>();
-
     int count = 0;
     queue.add(root);
     while (!queue.isEmpty()) {

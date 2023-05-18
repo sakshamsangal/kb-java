@@ -1,24 +1,15 @@
 package com.example.dsa;
-
-
 import java.util.*;
-
 public class Dijkstra {
     // Dijkstra algorithm
-
     int size;
-
-
     public void dijkstra(int[][] graph, int source) {
-
         boolean[] visited = new boolean[size];
         int[] distance = new int[size];
         int[] previous = new int[size];
-
         Arrays.fill(distance, Integer.MAX_VALUE);
         distance[source] = 0;
         previous[source] = source;
-
         for (int i = 0; i < size - 1; i++) {
             int fixedIndex = getMinimumVertex(distance, visited);
             visited[fixedIndex] = true;
@@ -30,8 +21,6 @@ public class Dijkstra {
         System.out.println(Arrays.toString(distance));
         printPath(source, previous);
     }
-
-
     // Get minimum vertex
     private int getMinimumVertex(int[] distance, boolean[] visited) {
         int minIndex = -1;
@@ -42,7 +31,6 @@ public class Dijkstra {
         }
         return minIndex;
     }
-
     // Get adjacent index
     public List<Integer> getAdjacentIndex(int[][] graph, int fixedIndex, boolean[] visited) {
         List<Integer> adjacentIndex = new ArrayList<>();
@@ -53,7 +41,6 @@ public class Dijkstra {
         }
         return adjacentIndex;
     }
-
     // Relax
     public void relax(int[] distance, int fixedIndex, int gapBetween, int adjacentIndex, int[] previous) {
         if (distance[fixedIndex] + gapBetween < distance[adjacentIndex]) {
@@ -61,7 +48,6 @@ public class Dijkstra {
             previous[adjacentIndex] = fixedIndex;
         }
     }
-
     // Print path
     private void printPath(int source, int[] previous) {
         for (int i = 0; i < size; i++) {
@@ -74,7 +60,6 @@ public class Dijkstra {
             System.out.println(temp + " ");
         }
     }
-
     // public class Main {
     //     public static void main(String[] args) {
     //         Graph graph = new Graph(6);
@@ -91,6 +76,4 @@ public class Dijkstra {
     //         graph.dijkstra(graphMatrix, 0);
     //     }
     // }
-
-
 }

@@ -1,7 +1,5 @@
 package com.example.dsa;
-
 import java.util.*;
-
 public class Topological{
     void topologicalSortDFSUtil(int v, boolean[] visited, Stack<Integer> stack) {
         visited[v] = true;
@@ -12,23 +10,18 @@ public class Topological{
         }
         stack.push(v);
     }
-
 // ## topologicalSortDFS
     void topologicalSortDFS() {
         Stack<Integer> stack = new Stack<Integer>();
-
         boolean[] visited = new boolean[size];
         for (int i = 0; i < size; i++)
             visited[i] = false;
-
         for (int i = 0; i < size; i++)
             if (!visited[i])
                 topologicalSortDFSUtil(i, visited, stack);
-
         while (!stack.empty())
             System.out.print(stack.pop() + " ");
     }
-
     int size;
     List<List<Integer>> adjacencyList = new ArrayList<>();
     // Kahn's Algo
@@ -40,27 +33,21 @@ public class Topological{
             }
         }
         System.out.println(Arrays.toString(inDegree));
-
         // Create a queue and enqueue all vertices with inDegree 0
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < size; i++) {
-
             if (inDegree[i] == 0) {
                 queue.add(i);
                 System.out.println(queue.peek());
             }
         }
-
-
         int count = 0;
         List<Integer> result = new ArrayList<>();
         while (!queue.isEmpty()) {
-
             System.out.println(queue);
             // Extract front of queue (or perform dequeue) and add it to topological order
             int deleted = queue.poll();
             result.add(deleted);
-
             // Iterate through all its neighbouring of deleted nodes
             // and decrease their in-degree by 1
             for (Integer node : adjacencyList.get(deleted)) {
@@ -69,13 +56,11 @@ public class Topological{
             }
             count++;
         }
-
         // Check if there was a cycle
         if (count != size) {
             System.out.println("There exists a cycle in the graph");
             return;
         }
-
         // Print topological order
         for (Integer item : result) {
             System.out.print(item + " ");

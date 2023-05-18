@@ -1,9 +1,6 @@
 package com.example.dsa;
-
 public class Search {
-
     static int count = 1;
-
     // normal binary search program
     static boolean binarySearch(int[] arr, int item) {
         int start = 0;
@@ -20,11 +17,9 @@ public class Search {
         }
         return false;
     }
-
     static class Bound {
         static int lower = 0;
         static int upper = 2;
-
         public static void setBound(int[] arr, int item) {
             while (arr[upper] < item) {
                 lower = upper;
@@ -32,7 +27,6 @@ public class Search {
             }
         }
     }
-
     // when arr.length is not allowed
     static boolean binarySearchInfinityArray(int[] arr, int item) {
         Bound.setBound(arr, item);
@@ -53,7 +47,17 @@ public class Search {
         return false;
     }
 
-
+    public static void main(String[] args) {
+        int[] arr = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+        double sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            Search.binarySearch(arr, arr[i]);
+            System.out.println(arr[i] + " = " + Search.count);
+            sum += Search.count;
+            Search.count = 1;
+        }
+        System.out.println("Total comparison = " + sum / arr.length);
+    }
     // // reverse order
     // static int linearSearch(int[] arr, int key) {
     //     for (int i = arr.length - 1; i > -1; i--) {
@@ -69,22 +73,7 @@ public class Search {
     //     }
     //     return false;
     // }
-
 }
-//
-// class Source {
-//     public static void main(String[] args) {
-//
-//         int[] arr = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-//         double sum = 0;
-//         for (int i = 0; i < arr.length; i++) {
-//             Search.binarySearch(arr, arr[i]);
-//             System.out.println(arr[i] + " = " + Search.count);
-//             sum += Search.count;
-//             Search.count = 1;
-//         }
-//         System.out.println("Total comparison = " + sum / arr.length);
-//
-//
-//     }
-// }
+
+
+

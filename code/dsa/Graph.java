@@ -1,18 +1,11 @@
 package com.example.dsa;
-
-
 import java.util.*;
-
 public class Graph {
-
     int size;
-
     private List<List<Integer>> adjacencyList;
-
     public void addEdge(Integer vertex1, Integer vertex2) {
         adjacencyList.get(vertex1).add(vertex2);
     }
-
     // BFS traversal
     // connected graph
     public void bfs() {
@@ -20,12 +13,9 @@ public class Graph {
         boolean[] visited = new boolean[size];
         queue.add(0);
         visited[0] = true;
-
         while (!queue.isEmpty()) {
             int deleted = queue.poll();
-
             System.out.print(deleted + " ");
-
             for (Integer item : adjacencyList.get(deleted)) {
                 if (!visited[item]) {
                     visited[item] = true;
@@ -34,18 +24,14 @@ public class Graph {
             }
         }
     }
-
     // connected graph dfs
     public void dfs(int vertex, boolean[] visited) {
         System.out.print(vertex + " ");
         visited[vertex] = true;
-
         for (Integer adjacent : adjacencyList.get(vertex)) {
-
             if (!visited[adjacent]) {
                 dfs(adjacent, visited);
             }
         }
     }
-
 }

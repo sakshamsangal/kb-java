@@ -1,22 +1,18 @@
 package com.example.dsa;
-
 // fast io
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
-
 public class CodeChef {
     static void solve(BufferedReader bufferedReader) throws IOException {
         int size = Integer.parseInt(bufferedReader.readLine());
         StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
-
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
             arr[i] = Integer.parseInt(stringTokenizer.nextToken());
         }
     }
-
     static void solve(Scanner scanner) {
         int size = scanner.nextInt();
         int[] arr = new int[size];
@@ -25,7 +21,6 @@ public class CodeChef {
         }
     }
 }
-
 // class Main {
 //
 //     // fast io
@@ -50,4 +45,3 @@ public class CodeChef {
 //     //     }
 //     // }
 // }
-

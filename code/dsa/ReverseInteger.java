@@ -1,5 +1,4 @@
 package com.example.dsa;
-
 public class ReverseInteger {
 static void reverseInteger(int n) {
      int a[] = new int[10];
@@ -29,6 +28,5 @@ static void reverseInteger(int n) {
          if (isNegative) sum = -sum;
          System.out.println(sum);
      }
-
  }
  }
