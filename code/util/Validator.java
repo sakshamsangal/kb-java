@@ -4,6 +4,9 @@ import org.springframework.stereotype.*;
 
 import java.util.regex.*;
 
+
+// remove empty lines
+// ^$\n
 @Component
 public class Validator {
     public boolean isValidPan(String panCardNo) {

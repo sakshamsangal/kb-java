@@ -28,10 +28,8 @@ public class BinaryTree {
         this.root = root;
     }
 
-
     // empty tree height = 0
     // max number of nodes from root to leaf
-
     void toDLL(Node prev, Node curr) {
         if (curr != null) {
             toDLL(prev, curr.left);
@@ -51,10 +49,8 @@ public class BinaryTree {
 
     void bfs() {
         if (root != null) {
-
             Queue<Node> queue = new LinkedList<>();
             queue.add(root);
-
             // adding child of parents
             while (!queue.isEmpty()) {
                 Node curr = queue.poll();
@@ -84,4 +80,3 @@ public class BinaryTree {
 //         System.out.println(binaryTree.root.right.right.data);
 //     }
 // }
-
