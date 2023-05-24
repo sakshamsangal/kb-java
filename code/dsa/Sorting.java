@@ -107,6 +107,8 @@ public class Sorting {
         }
         return minIndex;
     }
+
+
     static void countingSort(int[] arr, int max) {
         int[] rank = new int[max + 1];
         for (int i = 0; i < arr.length; i++) {

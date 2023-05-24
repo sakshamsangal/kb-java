@@ -27,6 +27,7 @@ public class Array {
     }
 
 
+
     static void powerSet(int[] arr, int size) {
         int totalSubset = (int) Math.pow(2, size); // total set
 
