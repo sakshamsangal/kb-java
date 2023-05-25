@@ -23,6 +23,7 @@ public class LIS {
                 // so make length[i] = just previous length + 1
                 maxLength[i] = maxLength[i - 1] + 1;
             }
+
             // arr[] is smaller than previous
             // it will not contribute to LIS
             else {
