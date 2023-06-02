@@ -1,59 +1,82 @@
-package com.example.dsa;
+package com.example;
 
 import java.util.*;
 
-public class Graph {
-    // No. of vertices
-    private int V;
 
-    // Adjacency Lists
-    private LinkedList<Integer> adj[];
+class Graph {
 
-    // Constructor
-    Graph(int v) {
-        V = v;
-        adj = new LinkedList[v];
-        for (int i = 0; i < v; ++i)
-            adj[i] = new LinkedList();
+    private static ArrayList<ArrayList<Integer>> adj;
+    private static int size;
+
+    public Graph(int V) {
+        size = V;
+        adj = new ArrayList<>(V);
+
+        for (int i = 0; i < size; i++)
+            adj.add(new ArrayList<>());
     }
 
-    // Function to add an edge into the graph
-    void addEdge(int v, int w) {
-        adj[v].add(w);
+    void addEdge(int u, int v) {
+        adj.get(u).add(v);
+        // adj.get(v).add(u);
     }
 
-    // BFS traversal
-    // connected graph
-    public void bfs() {
-        Queue<Integer> queue = new LinkedList<>();
-        boolean[] visited = new boolean[size];
-        queue.add(0);
-        visited[0] = true;
-        while (!queue.isEmpty()) {
-            int deleted = queue.poll();
-            System.out.print(deleted + " ");
-            for (Integer item : adjacencyList.get(deleted)) {
-                if (!visited[item]) {
-                    visited[item] = true;
-                    queue.add(item);
+
+    void BFSConnected(int s, boolean[] visited) {
+        Queue<Integer> q = new LinkedList<>();
+
+        visited[s] = true;
+        q.add(s);
+
+        while (!q.isEmpty()) {
+            int u = q.poll();
+            System.out.print(u + " ");
+
+            for (int v : adj.get(u)) {
+                if (!visited[v]) {
+                    visited[v] = true;
+                    q.add(v);
                 }
             }
         }
     }
 
-    // connected graph dfs
-    public void dfs(int vertex, boolean[] visited) {
-        System.out.print(vertex + " ");
-        visited[vertex] = true;
-        for (Integer adjacent : adjacencyList.get(vertex)) {
-            if (!visited[adjacent]) {
-                dfs(adjacent, visited);
+    void BFSDisconnected() {
+        boolean[] visited = new boolean[size];
+        for (int i = 0; i < size; i++) {
+            if (!visited[i]) {
+                BFSConnected(i, visited);
             }
         }
     }
 
-    // Driver code
-    public static void main(String args[]) {
+    void DFSRec(int s, boolean[] visited) {
+        visited[s] = true;
+        System.out.print(s + " ");
+
+        for (int u : adj.get(s)) {
+            if (!visited[u]) {
+                DFSRec(u, visited);
+            }
+        }
+    }
+
+    void DFSConnected(int s) {
+        boolean[] visited = new boolean[size];
+        DFSRec(s, visited);
+    }
+
+    void DFSDisconnected() {
+        boolean[] visited = new boolean[size];
+
+        for (int i = 0; i < size; i++) {
+            if (!visited[i]) {
+                DFSRec(i, visited);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
         Graph g = new Graph(4);
         g.addEdge(0, 1);
         g.addEdge(0, 2);
@@ -62,8 +85,8 @@ public class Graph {
         g.addEdge(2, 3);
         g.addEdge(3, 3);
 
-        System.out.println("Following is Breadth First Traversal " + "(starting from vertex 2)");
-
-        g.BFS(2);
+//        g.BFSConnected(2, new boolean[4]);
+//        g.DFSConnected(2);
+        g.DFSDisconnected();
     }
 }
