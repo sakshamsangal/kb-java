@@ -1,6 +1,6 @@
 package com.example.tree;
 
-public class DoublyLinkedList {
+public class ToDLL {
     public static void traverseDLL(Node root) {
         Node temp = root;
         while (temp != null) {
