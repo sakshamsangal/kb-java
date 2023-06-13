@@ -1,7 +1,10 @@
 <keymap version="1" name="Windows copy" parent="$default">
   <action id="CWMHostShowPopupAction" />
   <action id="CloseAllEditors">
-    <keyboard-shortcut first-keystroke="alt w" />
+    <keyboard-shortcut first-keystroke="alt w" second-keystroke="a" />
+  </action>
+  <action id="CloseAllEditorsButActive">
+    <keyboard-shortcut first-keystroke="alt w" second-keystroke="1" />
   </action>
   <action id="CloseProject">
     <keyboard-shortcut first-keystroke="alt c" />
