@@ -1,6 +1,5 @@
 package com.example.graph;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class ArticulationPoint {
@@ -42,9 +41,7 @@ public class ArticulationPoint {
 
         disc[u] = low[u] = ++time;
 
-        Iterator<Integer> i = adj[u].iterator();
-        while (i.hasNext()) {
-            int v = i.next();
+        for (int v : adj[u]) {
             if (!visited[v]) {
                 children++;
                 parent[v] = u;
